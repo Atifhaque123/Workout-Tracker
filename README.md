@@ -1,4 +1,5 @@
 #Workout Tracker
+
 A basic and safe Node.js CRUD web application that allows users to track their exercise. This application allows users to **create**, **view**, **update**, and **delete** workout entries. Each workout stores a **name**, **type**, **duration**, **date**, **intensity**, and **notes**.
 
 The system utilizes ExpressJS for routing, MongoDB Atlas for cloud data storage, EJS for templating, and Bootstrap + custom CSS for styling. The design and layout of the assignment have been completely customized beyond the in-class example
