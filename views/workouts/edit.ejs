@@ -1,0 +1,63 @@
+<%- include('../partials/header'); %>
+
+<!--Page container-->
+<div class="container mt-5">
+
+    <!--Page title-->
+    <h1 class="h3 mb-4">Edit Workout</h1>
+
+    <!-- Form that sends updated workout data to the server-->
+    <form action="/workouts/<%= workout._id %>/edit" method="POST" class="row g-3">
+
+        <!--Workout name-->
+        <div class="col-md-6">
+            <label class="form-label">Workout Name</label>
+            <!--Pre-fills the existing value-->
+            <input type="text" name="workoutName" class="form-control"
+                   value="<%= workout.workoutName %>" required>
+        </div>
+
+        <!--Workout type-->
+        <div class="col-md-6">
+            <label class="form-label">Workout Type</label>
+            <input type="text" name="workoutType" class="form-control"
+                   value="<%= workout.workoutType %>" required>
+        </div>
+
+        <!--Duration-->
+        <div class="col-md-4">
+            <label class="form-label">Duration (minutes)</label>
+            <input type="number" name="durationMinutes" class="form-control" min="1"
+                   value="<%= workout.durationMinutes %>" required>
+        </div>
+
+        <!--Date-->
+        <div class="col-md-4">
+            <label class="form-label">Date</label>
+            <!--Converts the stored date to YYYY-MM-DD for the date input-->
+            <input type="date" name="date" class="form-control"
+                   value="<%= workout.date ? workout.date.toISOString().slice(0,10) : '' %>" required>
+        </div>
+
+        <!--Intensity-->
+        <div class="col-md-4">
+            <label class="form-label">Intensity</label>
+            <input type="text" name="intensity" class="form-control"
+                   value="<%= workout.intensity %>" required>
+        </div>
+
+        <!--Notes-->
+        <div class="col-12">
+            <label class="form-label">Notes</label>
+            <textarea name="notes" class="form-control" rows="3"><%= workout.notes %></textarea>
+        </div>
+
+        <!--Buttons-->
+        <div class="col-12 mt-3">
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <a href="/workouts" class="btn btn-secondary ms-2">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<%- include('../partials/footer'); %>

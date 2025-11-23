@@ -1,0 +1,66 @@
+<%- include('../partials/header'); %>
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3">Your Workouts</h1>
+
+        <!--Button to create new workout-->
+        <a href="/workouts/new" class="btn btn-primary">Add New Workout</a>
+    </div>
+
+    <!--If there are no workouts saved yet-->
+    <% if (workouts.length === 0) { %>
+        <div class="alert alert-info">
+            You don't have any workouts yet. Click <strong>Add New Workout</strong> to create one.
+        </div>
+
+    <% } else { %>
+
+        <div class="row g-3">
+
+            <!--Loop through each workout and display it-->
+            <% workouts.forEach(w => { %>
+
+                <div class="col-md-6">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+
+                            <!--Workout name-->
+                            <h5 class="card-title mb-1"><%= w.workoutName %></h5>
+
+                            <!--Workout type, and Duration, and Intensity-->
+                            <p class="text-muted mb-2">
+                                <%= w.workoutType %> &middot; 
+                                <%= w.durationMinutes %> minutes &middot; 
+                                <%= w.intensity %>
+                            </p>
+
+                            <!--DIsplaying date-->
+                            <p class="mb-1">
+                                <strong>Date:</strong> 
+                                <%= w.date ? w.date.toDateString() : 'N/A' %>
+                            </p>
+
+                            <!--Showing notes only if they exist-->
+                            <% if (w.notes) { %>
+                                <p class="mb-2"><strong>Notes:</strong> <%= w.notes %></p>
+                            <% } %>
+                            
+                            <!--Edit button-->
+                            <a href="/workouts/<%= w._id%>/edit" class="btn btn-sm btn-outline-secondary me-2">
+                                Edit
+                            </a>
+
+                            <!--Delete button-->
+                            <a href="/workouts/<%= w._id %>/delete" class="btn btn-sm btn-outline-danger">
+                                Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    <% } %>
+</div>
+
+<%- include('../partials/footer'); %>

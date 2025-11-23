@@ -1,0 +1,53 @@
+<%- include('../partials/header'); %>
+
+<div class="container mt-5">
+    <h1 class="h3 mb-4">Create a New Workout</h1>
+
+    <!--Form that submits to POST/ workouts-->
+    <form action="/workouts" method="POST" class="row g-3">
+
+        <!--Workout Name-->
+        <div class="col-md-6">
+            <label class="form-label">Workout Name</label>
+            <input type="text" name="workoutName" class="form-control" required>
+        </div>
+
+        <!--Workout Type-->
+        <div class="col-md-6">
+            <label class="form-label">Workout Type</label>
+            <input type="text" name="workoutType" class="form-control" required>
+        </div>
+
+        <!--Duration-->
+        <div class="col-md-4">
+            <label class="form-label">Duration (minutes)</label>
+            <input type="number" name="durationMinutes" class="form-control" min="1" required>
+        </div>
+
+        <!--Date-->
+        <div class="col-md-4">
+            <label class="form-label">Date</label>
+            <input type="date" name="date" class="form-control" required>
+        </div>
+
+        <!--Intensity-->
+        <div class="col-md-4">
+            <label class="form-label">Intensity</label>
+            <input type="text" name="intensity" class="form-control" placeholder="Low / Medium / High" required>
+        </div>
+
+        <!--Notes Field-->
+        <div class="col-12">
+            <label class="form-label">Notes</label>
+            <textarea name="notes" class="form-control" rows="3"></textarea>
+        </div>
+
+        <!--Submit + Cancel-->
+        <div class="col-12 mt-3">
+            <button type="submit" class="btn btn-primary">Save Workout</button>
+            <a href="/workouts" class="btn btn-secondary ms-2">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<%- include('../partials/footer'); %>
